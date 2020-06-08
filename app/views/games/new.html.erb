@@ -1,0 +1,15 @@
+<h1>Here are your letters!</h1>
+  <%start_time = Time.now  %>
+  <ul class="list-inline">
+    <%@letters.each { |letter|%>
+    <li class="btn-square"><%=letter%></li>
+    <%}%>
+  </ul>
+
+  <form class = "form-inline" action="/score" method="post">
+    <input id = "input" type="text" name="attempt" placeholder="Type in your word!">
+    <input id="btn" type="submit">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :time, start_time %>
+    <%= hidden_field_tag :grid, @letters %>
+</form>
